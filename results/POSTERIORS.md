@@ -1,25 +1,49 @@
 # Posterior sample files
 
-The `.nc` posterior sample files are not in this repository. Together they are about 8 GB, well
+The `.nc` posterior sample files are not in this repository. Together they are about 8.8 GB, well
 past what a Git repository should carry, so they are deposited on Zenodo instead (DOI in the
 top-level `README.md`). Everything in `results/` here — every JSON, CSV and table the manuscript
 cites — was produced *from* them and is sufficient to reproduce every figure and every reported
 number without downloading them. You need the `.nc` files only to re-derive a quantity that is not
 already summarised here, or to inspect the draws directly.
 
-Each is written to `results/` by the command shown, with `SEED=42` throughout.
+Each is written to `results/` by the command shown, with `SEED=42` throughout. Sizes are decimal GB.
 
-| File | Approx. size | Produced by |
+## Deposited on Zenodo
+
+| File | Size | Produced by |
 |---|---:|---|
-| `trace_fixed005_real_d10k.nc` | 2.8 GB | `python src/fit_gdp_production.py` with `PRIOR=fixed005 GDP_COL=GDP_constant_2015usd DRAWS=10000` — **the deployed levels posterior under the fixed penalty** |
-| `trace_adaptive_real.nc` | 1.4 GB | `python src/fit_gdp_production.py` with `PRIOR=adaptive GDP_COL=GDP_constant_2015usd` — **the deployed levels posterior under adaptive shrinkage** |
-| `trace_fixed005_real.nc` | 1.4 GB | as the first row at the default 5,000 draws; superseded by the 10,000-draw refit, retained because S10 reports the comparison |
-| `trace_adaptive_real_noGNQ.nc` | 1.4 GB | as the second row with `EXCLUDE_ISO3=GNQ` — the Equatorial Guinea sensitivity refit of S10.2 |
-| `trace_fixed005.nc` | 1.4 GB | `PRIOR=fixed005` on the **nominal** series (`GDP_COL=GDP`) — the superseded fit, kept because S3 reports it |
-| `trace_adaptive.nc` | 1.4 GB | `PRIOR=adaptive` on the nominal series — likewise |
-| `hierarchical_wa_posterior.nc` | 58 MB | `python src/fit_hierarchical_workingage.py` — the long-difference model |
-| `hierarchical_wa_posterior_weakprior.nc` | 59 MB | the same script with `OUT_TAG=_weakprior` and weak priors |
-| `hierarchical_5yr_posterior.nc` | 41 MB | `python src/fit_hierarchical_5yr.py` — the five-year-block robustness fit |
+| `trace_fixed005_real.nc` | 2.82 GB | `src/fit_gdp_production.py` with `PRIOR=fixed005 GDP_COL=GDP_constant_2015usd` at **10,000 draws** — the deployed levels posterior under the fixed penalty. The doubled draw count is the reason given in SI S10.2, and is why this file is twice the size of the others |
+| `trace_adaptive_real.nc` | 1.43 GB | the same script with `PRIOR=adaptive GDP_COL=GDP_constant_2015usd` — the deployed levels posterior under adaptive shrinkage |
+| `trace_adaptive_real_noGNQ.nc` | 1.42 GB | as the row above with `EXCLUDE_ISO3=GNQ` — the Equatorial Guinea sensitivity refit of SI S10.2 |
+| `trace_fixed005.nc` | 1.42 GB | `PRIOR=fixed005` on the **nominal** series (`GDP_COL=GDP`) — the superseded fit, deposited because SI S3 reports it |
+| `trace_adaptive.nc` | 1.42 GB | `PRIOR=adaptive` on the nominal series — likewise. Figure 1 is drawn from this fit |
+| `hierarchical_wa_posterior.nc` | 61 MB | `src/fit_hierarchical_workingage.py` — the long-difference model |
+| `hierarchical_wa_posterior_weakprior.nc` | 59 MB | the same script with `OUT_TAG=_weakprior` and weak priors — the S5.1 refit |
+| `hierarchical_5yr_posterior.nc` | 41 MB | `src/fit_hierarchical_5yr.py` — the five-year-block robustness fit |
+
+## Present in a working tree but deliberately not deposited
+
+| File | Size | Why not |
+|---|---:|---|
+| `hierarchical_model_rcs_v2.nc` | 1.42 GB | a byte-identical copy of `trace_adaptive.nc`, kept under the filename `src/make_figures.py` expects. Recreate it with `cp results/trace_adaptive.nc results/hierarchical_model_rcs_v2.nc` rather than downloading it twice |
+| `trace_fixed005_real_5k_superseded.nc` | 1.43 GB | the 5,000-draw first pass at the real fixed-penalty fit. It was superseded by the 10,000-draw run because it did not meet the pre-specified sampling criterion (SI S10.2); the reported elasticities moved by 0.0001 between them. Nothing in the paper is drawn from it |
+
+## Filenames changed after the runs — read this before re-running
+
+The provenance strings recorded inside `results/*.json` are the paths **as they were at run time**.
+Two files were renamed afterwards, so the same path string means different things depending on which
+JSON you are reading. The JSONs are machine-written records of what actually ran and have not been
+edited; use this table to map them onto the deposited files.
+
+| Recorded in | Path as recorded | Deposited as | Which run |
+|:---|:---|:---|:---|
+| `levels_elasticity.json`, `chainwise_check.json` (`real_fixed`) | `results/trace_fixed005_real.nc` | `trace_fixed005_real_5k_superseded.nc` | fixed penalty, real GDP, **5,000 draws** |
+| `levels_elasticity_refits.json` (`real_fixed_d10k`) | `results/trace_fixed005_real_d10k.nc` | `trace_fixed005_real.nc` | fixed penalty, real GDP, **10,000 draws** — the deployed fit |
+
+The reported fixed-penalty elasticity is the 10,000-draw run. The 5,000-draw run survives only in the
+`real_fixed` block of `levels_elasticity.json` and in the S10.2 comparison of the two; the elasticities
+moved by 0.0001 between them.
 
 ## What each stage needs
 
