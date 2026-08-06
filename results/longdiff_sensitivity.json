@@ -1,0 +1,148 @@
+{
+  "settings": {
+    "draws": 1500,
+    "tune": 1000,
+    "chains": 4,
+    "seed": 42,
+    "gdp_column": "GDP_constant_2015usd",
+    "blocks": [
+      1970,
+      1980,
+      1990,
+      2000,
+      2010,
+      2020
+    ]
+  },
+  "specifications": [
+    {
+      "label": "pooled intercepts, with winsorisation",
+      "n_obs": 896,
+      "n_countries": 179,
+      "free_country_intercepts": false,
+      "elasticity_mean": 0.7988259829304488,
+      "elasticity_q2.5": 0.5765999502731518,
+      "elasticity_q97.5": 1.0269122563126656,
+      "P_lt_1": 0.9616666666666667,
+      "delta_mean": -0.04653389488189212,
+      "delta_q2.5": -0.8168294676025034,
+      "delta_q97.5": 0.7112245894310938,
+      "P_delta_lt_0": 0.548,
+      "contraction_elasticity_mean": 0.7522920880485569,
+      "contraction_P_lt_1": 0.742,
+      "sigma_alpha_country": 0.029900911715295464,
+      "residual_sigma": 0.24278918939260893,
+      "max_rhat": 1.0,
+      "min_ess_bulk": 2366.0,
+      "divergences": 1,
+      "winsorised": true
+    },
+    {
+      "label": "free country intercepts, with winsorisation",
+      "n_obs": 896,
+      "n_countries": 179,
+      "free_country_intercepts": true,
+      "elasticity_mean": 0.9317656189056762,
+      "elasticity_q2.5": 0.5704953762828056,
+      "elasticity_q97.5": 1.2607026579959995,
+      "P_lt_1": 0.6458333333333334,
+      "delta_mean": 0.1274726628538391,
+      "delta_q2.5": -0.7229655052925578,
+      "delta_q97.5": 0.9673861959641545,
+      "P_delta_lt_0": 0.3858333333333333,
+      "contraction_elasticity_mean": 1.0592382817595154,
+      "contraction_P_lt_1": 0.45116666666666666,
+      "sigma_alpha_country": null,
+      "residual_sigma": 0.2368605213396469,
+      "max_rhat": 1.0,
+      "min_ess_bulk": 1895.0,
+      "divergences": 1,
+      "winsorised": true
+    },
+    {
+      "label": "pooled intercepts, no winsorisation",
+      "n_obs": 896,
+      "n_countries": 179,
+      "free_country_intercepts": false,
+      "elasticity_mean": 0.8563987929867529,
+      "elasticity_q2.5": 0.6137708104453286,
+      "elasticity_q97.5": 1.1036229103230348,
+      "P_lt_1": 0.8841666666666667,
+      "delta_mean": -0.011070228845738052,
+      "delta_q2.5": -0.7643601421513065,
+      "delta_q97.5": 0.7404935717896185,
+      "P_delta_lt_0": 0.514,
+      "contraction_elasticity_mean": 0.845328564141015,
+      "contraction_P_lt_1": 0.657,
+      "sigma_alpha_country": 0.02713207876010074,
+      "residual_sigma": 0.27747708351051203,
+      "max_rhat": 1.0,
+      "min_ess_bulk": 2391.0,
+      "divergences": 0,
+      "winsorised": false
+    },
+    {
+      "label": "free country intercepts, no winsorisation",
+      "n_obs": 896,
+      "n_countries": 179,
+      "free_country_intercepts": true,
+      "elasticity_mean": 0.9962240699738992,
+      "elasticity_q2.5": 0.6119161273406679,
+      "elasticity_q97.5": 1.3668310541165642,
+      "P_lt_1": 0.501,
+      "delta_mean": 0.15775341719766403,
+      "delta_q2.5": -0.7028292938521173,
+      "delta_q97.5": 1.0493164426477062,
+      "P_delta_lt_0": 0.36583333333333334,
+      "contraction_elasticity_mean": 1.1539774871715633,
+      "contraction_P_lt_1": 0.38266666666666665,
+      "sigma_alpha_country": null,
+      "residual_sigma": 0.26984562419117597,
+      "max_rhat": 1.0,
+      "min_ess_bulk": 1913.0,
+      "divergences": 1,
+      "winsorised": false
+    }
+  ],
+  "panel_estimators": {
+    "winsorised": {
+      "within": 1.0744816380038387,
+      "between": 0.6027472244821411,
+      "pooled": 0.6979397259017989,
+      "twoway_fe": 0.9575369911908721,
+      "twoway_fe_se_clustered": 0.15887356592905055,
+      "n_clusters": 179
+    },
+    "unwinsorised": {
+      "within": 1.1414186597263547,
+      "between": 0.6431418141141061,
+      "pooled": 0.7569193954124291,
+      "twoway_fe": 1.0144179109909182,
+      "twoway_fe_se_clustered": 0.15380275860600984,
+      "n_clusters": 179
+    }
+  },
+  "winsorisation": {
+    "n_rows_clipped_either_variable": 36,
+    "n_contraction_blocks": 69,
+    "n_contraction_blocks_clipped": 11,
+    "share_of_contraction_blocks_clipped": 0.15942028985507245,
+    "contraction_predictor_variance_removed": 0.5478031525362971,
+    "countries_clipped_in_contraction": [
+      "ARM",
+      "BGR",
+      "BIH",
+      "GEO",
+      "LTU",
+      "LVA",
+      "PRI",
+      "SYR",
+      "UKR"
+    ],
+    "decades_clipped_in_contraction": {
+      "2020": 6,
+      "2000": 4,
+      "2010": 1
+    }
+  }
+}

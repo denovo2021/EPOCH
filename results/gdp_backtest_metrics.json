@@ -1,0 +1,17 @@
+{
+  "gdp_col": "Log_GDP_constant",
+  "train_period": "1960-2010",
+  "test_period": "2011-2017",
+  "test_n": 1252,
+  "MAE_log": 0.1286,
+  "COV95": 0.8818,
+  "CRPS": 0.099,
+  "max_rhat": 1.01,
+  "min_ess_bulk": 553.0,
+  "divergences": 0,
+  "draws": 3000,
+  "tune": 4000,
+  "chains": 4,
+  "target_accept": 0.98,
+  "seed": 42
+}

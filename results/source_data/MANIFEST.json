@@ -1,0 +1,17 @@
+{
+  "generated_by": "src/s12_source_data.py",
+  "files": {
+    "Figure3_source_data.csv": "panel a: GDP_median; panel b: GDPpc_median; colour: population_falls_2024_2100",
+    "Figure4_source_data.csv": "x: g_agg_pct_per_yr; y: g_gdppc_pct_per_yr; colour: g_pop_pct_per_yr",
+    "Figure5_source_data.csv": "panel a: the two GDPpc_2100 columns for rows with in_panel_a; panel b: difference_pct against g_pop_pct_per_yr for all rows",
+    "Figure6_source_data.csv": "panel a: outlay_2024_pct -> pressure_2100_pct; panel b: benefit_shortfall_2100_pct"
+  },
+  "figures_without_a_csv": {
+    "Figure1_population_GDP_association": "derived from results/trace_adaptive.nc via src/make_figures.py; the posterior is archived in the Zenodo deposit rather than the git repository (1.4 GB)",
+    "Figure2_backtest_accuracy": "derived from results/backtest_predictions.npz via src/make_figures.py",
+    "FigureS1_trace / FigureS2_ppc / FigureS3_energy": "derived from results/trace_adaptive.nc via src/make_si_diagnostics.py",
+    "FigureS4_local_elasticity_fixed": "derived from results/trace_fixed005.nc via src/make_figureS4_fixed.py",
+    "FigureS5_elasticity_sensitivity": "derived from both levels posteriors via src/make_sensitivity_figure.py",
+    "FigureS6_regional_elasticity_5yr_forest": "derived from results/hierarchical_5yr_posterior.nc via src/fit_hierarchical_5yr.py; the per-region values are in results/hierarchical_region_elasticities_5yr.csv"
+  }
+}

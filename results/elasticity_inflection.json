@@ -1,0 +1,21 @@
+{
+  "prior": "hierarchical adaptive: sigma_theta ~ HalfNormal(0.2); theta ~ Normal(0, sigma_theta)",
+  "decline_elasticity": {
+    "mean": 1.219933847246102,
+    "ci_lo": 1.1053558379463126,
+    "ci_hi": 1.3335426312017733,
+    "n": 1133
+  },
+  "growth_elasticity": {
+    "mean": 0.9777789653652057,
+    "ci_lo": 0.9132864456102843,
+    "ci_hi": 1.0415149431725998,
+    "n": 9799
+  },
+  "core_mean_elasticity": 0.9680422629814146,
+  "elasticity_core_min": 0.3793228566356921,
+  "elasticity_core_max": 2.7919970556577027,
+  "epsilon_subunitary": true,
+  "tipping_point_pop": 5835956.285413921,
+  "tipping_point_log10pop": 6.766112030124324
+}

@@ -1,0 +1,82 @@
+{
+  "generated_utc": "2026-07-30T02:15:27+00:00",
+  "script": "s07_projection_2100.py",
+  "tag": "_eps1.22",
+  "settings": {
+    "base_year": 2024,
+    "end_year": 2100,
+    "horizon_years": 76,
+    "base_anchor": "observed 2023 real GDP advanced one year by alpha_country/10",
+    "s_ss_decadal": 0.175,
+    "s_ss_pct_per_year": 1.7654,
+    "scenario": "Medium variant",
+    "converge": true,
+    "residual": true,
+    "sigma_decadal": 0.24286634889529132,
+    "sigma_annual": 0.0768010829518239,
+    "seed": 42,
+    "elasticity": "override: expansion 0.9800 / contraction 1.2200",
+    "eps_growth": 0.98,
+    "eps_decline": 1.22,
+    "n_posterior_draws": 6000,
+    "n_draws_used": 1000
+  },
+  "checks": {
+    "identity_max_residual": 3.552713678800501e-15,
+    "identity_tolerance": 1e-10,
+    "g_agg_bounds_pct": [
+      -3.0,
+      5.0
+    ],
+    "g_agg_min_pct": -0.7965002122538928,
+    "g_agg_max_pct": 4.243295935605291,
+    "g_agg_median_pct": 1.8768846947158986,
+    "n_above_warn": 3,
+    "convergence_mean_deceleration_pp_per_yr": 1.3149065025376927,
+    "convergence_share_decelerating": 0.8628571428571429,
+    "sign_paradoxes": 0
+  },
+  "coverage": {
+    "n_countries": 175,
+    "n_countries_shrinking": 75,
+    "n_posterior_draws_used": 1000
+  },
+  "headline": {
+    "top5_2100_aggregate": [
+      {
+        "ISO3": "USA",
+        "GDP_2100_T": 88.41,
+        "g_agg_pct": 1.81,
+        "g_pc_pct": 1.54
+      },
+      {
+        "ISO3": "CHN",
+        "GDP_2100_T": 40.07,
+        "g_agg_pct": 1.04,
+        "g_pc_pct": 2.11
+      },
+      {
+        "ISO3": "IND",
+        "GDP_2100_T": 22.15,
+        "g_agg_pct": 2.48,
+        "g_pc_pct": 2.43
+      },
+      {
+        "ISO3": "GBR",
+        "GDP_2100_T": 15.16,
+        "g_agg_pct": 1.98,
+        "g_pc_pct": 1.89
+      },
+      {
+        "ISO3": "JPN",
+        "GDP_2100_T": 13.86,
+        "g_agg_pct": 1.42,
+        "g_pc_pct": 2.04
+      }
+    ],
+    "median_g_pc_pct_shrinking": 1.774224461073772,
+    "median_g_agg_pct_shrinking": 1.0443240618238827,
+    "median_g_pc_pct_growing": 1.5458622331154237,
+    "mean_per_capita_dividend_pp": 0.5207138145206914
+  }
+}

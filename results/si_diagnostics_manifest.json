@@ -1,0 +1,13 @@
+{
+  "posterior": "results/trace_adaptive_real.nc",
+  "posterior_name": "trace_adaptive_real.nc",
+  "gdp_column": "GDP_constant_2015usd",
+  "n_country_years": 8806,
+  "n_countries": 182,
+  "median_predicted_minus_observed": 0.03,
+  "figures": [
+    "FigureS1_trace",
+    "FigureS2_ppc",
+    "FigureS3_energy"
+  ]
+}

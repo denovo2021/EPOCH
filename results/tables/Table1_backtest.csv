@@ -1,0 +1,10 @@
+Diagnostic,Value
+Training window,1960–2010
+Evaluation window,2011–2017
+Held-out country-years,1252
+Mean absolute error (log₁₀ real GDP),0.13
+Continuous ranked probability score,0.099
+Coverage of the nominal 95% predictive interval,88.2% (intervals are slightly too narrow)
+Maximum split-$\hat{R}$,1.01
+Minimum bulk effective sample size,553
+Divergent transitions,0 of 12000 post-warmup draws

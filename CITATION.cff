@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+title: "EPOCH — the population–output elasticity"
+message: "If you use this software or the archived results, please cite the paper below."
+type: software
+license: MIT
+repository-code: "https://github.com/denovo2021/EPOCH"
+abstract: >-
+  Analysis code, input data and result artifacts for a hierarchical Bayesian
+  estimate of the elasticity of aggregate real output with respect to
+  population, and its propagation through United Nations medium-variant
+  demography to 2100 for 175 economies.
+keywords:
+  - depopulation
+  - population–output elasticity
+  - hierarchical Bayesian model
+  - economic projection
+  - population ageing
+authors:
+  - family-names: Kawahara
+    given-names: Tomoki
+    affiliation: "Department of Public Health, Institute of Science Tokyo, Tokyo, Japan"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: Terada
+    given-names: Shuhei
+    affiliation: "Department of Public Health, Institute of Science Tokyo, Tokyo, Japan"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: Nawa
+    given-names: Nobutoshi
+    affiliation: "Department of Global Environmental Health, Institute of Science Tokyo, Tokyo, Japan"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: Fujiwara
+    given-names: Takeo
+    affiliation: "Department of Public Health, Institute of Science Tokyo, Tokyo, Japan"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+preferred-citation:
+  type: article
+  title: >-
+    Real output scales sub-proportionally with population, and super-unitary
+    estimates are an artifact of nominal GDP
+  authors:
+    - family-names: Kawahara
+      given-names: Tomoki
+    - family-names: Terada
+      given-names: Shuhei
+    - family-names: Nawa
+      given-names: Nobutoshi
+    - family-names: Fujiwara
+      given-names: Takeo
+  year: 2026
+  # Journal, volume, pages and DOI are filled in on publication.

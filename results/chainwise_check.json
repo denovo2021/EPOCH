@@ -1,0 +1,1094 @@
+{
+  "thresholds": {
+    "rhat_max": 1.01,
+    "ess_min": 400.0
+  },
+  "specifications": {
+    "real_fixed": {
+      "posterior": "results/trace_fixed005_real.nc",
+      "gdp_column": "GDP_constant_2015usd",
+      "n_chains": 4,
+      "n_draws_per_chain": 10000,
+      "n_country_years": 10934,
+      "phases": {
+        "contraction": {
+          "per_chain_mean": [
+            0.6514975772532638,
+            0.6521956840189577,
+            0.6519769195994095,
+            0.6523159678663729
+          ],
+          "pooled_mean": 0.651996537184501,
+          "pooled_sd": 0.02974823434329705,
+          "chain_spread": 0.0008183906131090657,
+          "chain_spread_in_posterior_sd": 0.02751056091816312,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 1127,
+          "rhat": 1.0007874269960206,
+          "ess_bulk": 2379.9121187240967,
+          "ess_tail": 5407.408882881033,
+          "mcse_mean": 0.0006104268531888312,
+          "mcse_in_posterior_sd": 0.020519767531224056,
+          "passes_prespecified": true
+        },
+        "expansion": {
+          "per_chain_mean": [
+            0.6738831798479787,
+            0.6748308386513067,
+            0.6748068757695684,
+            0.6750350392571104
+          ],
+          "pooled_mean": 0.6746389833814911,
+          "pooled_sd": 0.02516902491579598,
+          "chain_spread": 0.0011518594091316503,
+          "chain_spread_in_posterior_sd": 0.045764959627369116,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 9806,
+          "rhat": 1.0010318857314673,
+          "ess_bulk": 1999.8024825893967,
+          "ess_tail": 3474.898124450001,
+          "mcse_mean": 0.0005630352955518318,
+          "mcse_in_posterior_sd": 0.022370167197000673,
+          "passes_prespecified": true
+        }
+      },
+      "estimand_passes_prespecified": true,
+      "blocks": {
+        "elasticity (beta0, theta)": {
+          "n_variables": 2,
+          "max_rhat": 1.009197477986984,
+          "min_ess_bulk": 833.4266633466675,
+          "min_ess_tail": 1250.9758599962297,
+          "passes_prespecified": true
+        },
+        "scales (sigma_theta, sigma, nu)": {
+          "n_variables": 2,
+          "max_rhat": 1.0000802925701389,
+          "min_ess_bulk": 13152.971984416765,
+          "min_ess_tail": 12160.450258482382,
+          "passes_prespecified": true
+        },
+        "time (tau0, tau_region, sigma_tau_region)": {
+          "n_variables": 3,
+          "max_rhat": 1.0038239445871264,
+          "min_ess_bulk": 2427.3836103382564,
+          "min_ess_tail": 3314.4084661962506,
+          "passes_prespecified": true
+        },
+        "age (delta_washare, delta_olddep)": {
+          "n_variables": 2,
+          "max_rhat": 1.0009057487309723,
+          "min_ess_bulk": 5716.598219911614,
+          "min_ess_tail": 9413.986861954578,
+          "passes_prespecified": true
+        },
+        "hierarchical scales (sigma_alpha*)": {
+          "n_variables": 2,
+          "max_rhat": 1.0029951944434758,
+          "min_ess_bulk": 674.2095741311912,
+          "min_ess_tail": 1120.151268085721,
+          "passes_prespecified": true
+        },
+        "intercepts (alpha*, z_alpha*)": {
+          "n_variables": 5,
+          "max_rhat": 1.0084815143697883,
+          "min_ess_bulk": 513.4482638890122,
+          "min_ess_tail": 861.8154083886346,
+          "passes_prespecified": true
+        },
+        "ALL parameters": {
+          "n_variables": 18,
+          "max_rhat": 1.009197477986984,
+          "min_ess_bulk": 513.4482638890122,
+          "min_ess_tail": 861.8154083886346,
+          "passes_prespecified": true
+        }
+      },
+      "worst_parameters": [
+        {
+          "parameter": "theta[4]",
+          "rhat": 1.009197477986984,
+          "per_chain_mean": [
+            -0.18552341458890526,
+            -0.17340063679009937,
+            -0.17544485593543782,
+            -0.181234963207639
+          ],
+          "per_chain_sd": [
+            0.0824936350421884,
+            0.08622802442619185,
+            0.09695033054064926,
+            0.08757043089453426
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.13727431453783903,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "theta[5]",
+          "rhat": 1.0091115102009955,
+          "per_chain_mean": [
+            -0.25982115790236665,
+            -0.2463189110995254,
+            -0.24929395378462946,
+            -0.2542400303113537
+          ],
+          "per_chain_sd": [
+            0.08835616652652829,
+            0.09251625994149017,
+            0.10411069362756654,
+            0.09348915251515573
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.14270262610998022,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "theta[6]",
+          "rhat": 1.009097233602215,
+          "per_chain_mean": [
+            -0.22896842885559754,
+            -0.21471154574983412,
+            -0.21793524405673023,
+            -0.22272444298975227
+          ],
+          "per_chain_sd": [
+            0.09299503615820558,
+            0.09770628685961866,
+            0.10967628968007713,
+            0.09862225752909558
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.14292619290981193,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "theta[7]",
+          "rhat": 1.0088051699264693,
+          "per_chain_mean": [
+            -0.21128527599095406,
+            -0.19628295126469106,
+            -0.19983583103351335,
+            -0.20474751436998623
+          ],
+          "per_chain_sd": [
+            0.09883709062106635,
+            0.10399340123026778,
+            0.11615052431354378,
+            0.10442856971359485
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.1417287206205953,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "theta[8]",
+          "rhat": 1.0087518384342318,
+          "per_chain_mean": [
+            -0.19857845400709254,
+            -0.1823666366760104,
+            -0.18642610130429563,
+            -0.19113267903277123
+          ],
+          "per_chain_sd": [
+            0.10646980171787276,
+            0.1122251328188392,
+            0.12468047287697342,
+            0.11222807931740349
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.1423326888685629,
+          "reads_as": "slow mixing"
+        }
+      ],
+      "nu": {
+        "mean": 2.055215619774947,
+        "sd": 0.03423694216208265,
+        "q2.5": 2.0074050147231555,
+        "q97.5": 2.136682954790394,
+        "min": 2.000292496652651,
+        "floor_tolerance": 0.01,
+        "fraction_at_floor": 0.044375,
+        "implied_residual_sd_multiplier": 6.100953575710767
+      },
+      "sigma": {
+        "mean": 0.062003697635129994,
+        "sd": 0.0009048263167665309
+      }
+    },
+    "real_adaptive": {
+      "posterior": "results/trace_adaptive_real.nc",
+      "gdp_column": "GDP_constant_2015usd",
+      "n_chains": 4,
+      "n_draws_per_chain": 5000,
+      "n_country_years": 10934,
+      "phases": {
+        "contraction": {
+          "per_chain_mean": [
+            0.8066241925630537,
+            0.8037415683003166,
+            0.8061255317745081,
+            0.8062890778068679
+          ],
+          "pooled_mean": 0.8056950926111865,
+          "pooled_sd": 0.029220004022117965,
+          "chain_spread": 0.00288262426273711,
+          "chain_spread_in_posterior_sd": 0.09865242525480555,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 1127,
+          "rhat": 1.0018020151855787,
+          "ess_bulk": 3078.767686357319,
+          "ess_tail": 4070.5319621240587,
+          "mcse_mean": 0.0005265280897724179,
+          "mcse_in_posterior_sd": 0.01801943933251565,
+          "passes_prespecified": true
+        },
+        "expansion": {
+          "per_chain_mean": [
+            0.6925856980961959,
+            0.6898812952754688,
+            0.6921293949860491,
+            0.6936914603031873
+          ],
+          "pooled_mean": 0.6920719621652254,
+          "pooled_sd": 0.024305929795285876,
+          "chain_spread": 0.0038101650277184707,
+          "chain_spread_in_posterior_sd": 0.15675866176727996,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 9806,
+          "rhat": 1.0031855512407932,
+          "ess_bulk": 2448.930218246954,
+          "ess_tail": 2990.8301386672465,
+          "mcse_mean": 0.0004916392762924395,
+          "mcse_in_posterior_sd": 0.020227133067248174,
+          "passes_prespecified": true
+        }
+      },
+      "estimand_passes_prespecified": true,
+      "blocks": {
+        "elasticity (beta0, theta)": {
+          "n_variables": 2,
+          "max_rhat": 1.00348229578507,
+          "min_ess_bulk": 1284.1286048013903,
+          "min_ess_tail": 1203.4285098884288,
+          "passes_prespecified": true
+        },
+        "scales (sigma_theta, sigma, nu)": {
+          "n_variables": 3,
+          "max_rhat": 1.0036909747895773,
+          "min_ess_bulk": 6747.717538802197,
+          "min_ess_tail": 8616.609015510292,
+          "passes_prespecified": true
+        },
+        "time (tau0, tau_region, sigma_tau_region)": {
+          "n_variables": 3,
+          "max_rhat": 1.0019060401028248,
+          "min_ess_bulk": 2364.301703877495,
+          "min_ess_tail": 2911.5050376963122,
+          "passes_prespecified": true
+        },
+        "age (delta_washare, delta_olddep)": {
+          "n_variables": 2,
+          "max_rhat": 1.0028455257036857,
+          "min_ess_bulk": 5964.365920507715,
+          "min_ess_tail": 7617.696244081918,
+          "passes_prespecified": true
+        },
+        "hierarchical scales (sigma_alpha*)": {
+          "n_variables": 2,
+          "max_rhat": 1.0051669430931756,
+          "min_ess_bulk": 929.1995727118478,
+          "min_ess_tail": 1134.022809395014,
+          "passes_prespecified": true
+        },
+        "intercepts (alpha*, z_alpha*)": {
+          "n_variables": 5,
+          "max_rhat": 1.532610333810255,
+          "min_ess_bulk": 7.085418362466333,
+          "min_ess_tail": 26.638345018733236,
+          "passes_prespecified": false
+        },
+        "ALL parameters": {
+          "n_variables": 19,
+          "max_rhat": 1.532610333810255,
+          "min_ess_bulk": 7.085418362466333,
+          "min_ess_tail": 26.638345018733236,
+          "passes_prespecified": false
+        }
+      },
+      "worst_parameters": [
+        {
+          "parameter": "z_alpha_country[Equatorial Guinea]",
+          "rhat": 1.532610333810255,
+          "per_chain_mean": [
+            1.149208542087946,
+            1.1210397062482393,
+            1.1341642055177,
+            -1.2054547189741838
+          ],
+          "per_chain_sd": [
+            0.18959253664523806,
+            0.1814317715741708,
+            0.18555230427981784,
+            0.16907743188917018
+          ],
+          "between_chain_gap_in_within_chain_sd": 12.9795363466717,
+          "reads_as": "mode-splitting"
+        },
+        {
+          "parameter": "alpha_country[Equatorial Guinea]",
+          "rhat": 1.5287599495192206,
+          "per_chain_mean": [
+            10.369713389829448,
+            10.368131532607366,
+            10.368866375159067,
+            9.160088337279094
+          ],
+          "per_chain_sd": [
+            0.043085233989086605,
+            0.042386333467057134,
+            0.04310939639256435,
+            0.032205566511784994
+          ],
+          "between_chain_gap_in_within_chain_sd": 30.09269619384912,
+          "reads_as": "mode-splitting"
+        },
+        {
+          "parameter": "z_alpha_country[Seychelles]",
+          "rhat": 1.0278004528543077,
+          "per_chain_mean": [
+            0.12406366245311037,
+            0.09530961345320406,
+            0.10972919008490435,
+            0.1959006366132157
+          ],
+          "per_chain_sd": [
+            0.18243147655724035,
+            0.1795201504375298,
+            0.17565455556472045,
+            0.18009840177288158
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.5606263376655679,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "alpha_region[Sub-Saharan Africa]",
+          "rhat": 1.0261779874180295,
+          "per_chain_mean": [
+            9.794008175506589,
+            9.80295651569443,
+            9.80021015533619,
+            9.76332481876153
+          ],
+          "per_chain_sd": [
+            0.07528264534880996,
+            0.07555100060051331,
+            0.0754749138780918,
+            0.07486960142689465
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.5263555201724548,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Liberia]",
+          "rhat": 1.0259273886655347,
+          "per_chain_mean": [
+            0.4848971684844486,
+            0.4615444082314372,
+            0.47070896234887366,
+            0.5453310336720242
+          ],
+          "per_chain_sd": [
+            0.15833261693759387,
+            0.1542128436174094,
+            0.15620965271923115,
+            0.15789422160394073
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.5348230391523555,
+          "reads_as": "slow mixing"
+        }
+      ],
+      "nu": {
+        "mean": 2.05000277128755,
+        "sd": 0.03138372303701547,
+        "q2.5": 2.006909104467522,
+        "q97.5": 2.1249403864805863,
+        "min": 2.0005021292215246,
+        "floor_tolerance": 0.01,
+        "fraction_at_floor": 0.04685,
+        "implied_residual_sd_multiplier": 6.402951123726762
+      },
+      "sigma": {
+        "mean": 0.06111922667014449,
+        "sd": 0.0008672389744670965
+      }
+    },
+    "real_adaptive_noGNQ": {
+      "posterior": "results/trace_adaptive_real_noGNQ.nc",
+      "gdp_column": "GDP_constant_2015usd",
+      "n_chains": 4,
+      "n_draws_per_chain": 5000,
+      "n_country_years": 10934,
+      "phases": {
+        "contraction": {
+          "per_chain_mean": [
+            0.8065223230925878,
+            0.8050611644099254,
+            0.8050457126006981,
+            0.8069312028494533
+          ],
+          "pooled_mean": 0.8058901007381661,
+          "pooled_sd": 0.029566508086564972,
+          "chain_spread": 0.0018854902487551728,
+          "chain_spread_in_posterior_sd": 0.06377115089934952,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 1127,
+          "rhat": 1.0025834571796957,
+          "ess_bulk": 2373.798712165484,
+          "ess_tail": 3558.4829945845167,
+          "mcse_mean": 0.0006069278316257006,
+          "mcse_in_posterior_sd": 0.020527545215983378,
+          "passes_prespecified": true
+        },
+        "expansion": {
+          "per_chain_mean": [
+            0.6920698412038193,
+            0.6907767667784996,
+            0.690883648259326,
+            0.6923473770269452
+          ],
+          "pooled_mean": 0.6915194083171474,
+          "pooled_sd": 0.024536885142169236,
+          "chain_spread": 0.0015706102484455142,
+          "chain_spread_in_posterior_sd": 0.06401017241370438,
+          "per_chain_P_lt_1": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "n_country_years": 9806,
+          "rhat": 1.0030839774348508,
+          "ess_bulk": 1883.654191409796,
+          "ess_tail": 2256.8528558311104,
+          "mcse_mean": 0.0005663047483591997,
+          "mcse_in_posterior_sd": 0.023079732617973785,
+          "passes_prespecified": true
+        }
+      },
+      "estimand_passes_prespecified": true,
+      "blocks": {
+        "elasticity (beta0, theta)": {
+          "n_variables": 2,
+          "max_rhat": 1.0070981654378097,
+          "min_ess_bulk": 1008.4765445944284,
+          "min_ess_tail": 1564.3943587752422,
+          "passes_prespecified": true
+        },
+        "scales (sigma_theta, sigma, nu)": {
+          "n_variables": 3,
+          "max_rhat": 1.000992244470083,
+          "min_ess_bulk": 6295.398938131346,
+          "min_ess_tail": 7838.498611176966,
+          "passes_prespecified": true
+        },
+        "time (tau0, tau_region, sigma_tau_region)": {
+          "n_variables": 3,
+          "max_rhat": 1.0041576527948746,
+          "min_ess_bulk": 2017.443609300846,
+          "min_ess_tail": 2833.7768239683596,
+          "passes_prespecified": true
+        },
+        "age (delta_washare, delta_olddep)": {
+          "n_variables": 2,
+          "max_rhat": 1.001037591005687,
+          "min_ess_bulk": 4196.865465784614,
+          "min_ess_tail": 6815.330745212932,
+          "passes_prespecified": true
+        },
+        "hierarchical scales (sigma_alpha*)": {
+          "n_variables": 2,
+          "max_rhat": 1.008865392027619,
+          "min_ess_bulk": 453.3633240761414,
+          "min_ess_tail": 692.7851086098724,
+          "passes_prespecified": true
+        },
+        "intercepts (alpha*, z_alpha*)": {
+          "n_variables": 5,
+          "max_rhat": 1.011949177860179,
+          "min_ess_bulk": 339.3853239474627,
+          "min_ess_tail": 412.8598522874408,
+          "passes_prespecified": false
+        },
+        "ALL parameters": {
+          "n_variables": 19,
+          "max_rhat": 1.011949177860179,
+          "min_ess_bulk": 339.3853239474627,
+          "min_ess_tail": 412.8598522874408,
+          "passes_prespecified": false
+        }
+      },
+      "worst_parameters": [
+        {
+          "parameter": "z_alpha_region[Europe & Central Asia]",
+          "rhat": 1.011949177860179,
+          "per_chain_mean": [
+            0.5986301448381937,
+            0.6031518455058411,
+            0.6860797255941028,
+            0.6104981498368832
+          ],
+          "per_chain_sd": [
+            0.4803199787198563,
+            0.46476228877421055,
+            0.4670902379798708,
+            0.4405364582621166
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.18880370844552705,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "sigma_alpha_region",
+          "rhat": 1.008865392027619,
+          "per_chain_mean": [
+            0.5565130380030046,
+            0.5626565995005346,
+            0.5213491188936413,
+            0.5630026107913533
+          ],
+          "per_chain_sd": [
+            0.187358811593458,
+            0.1989564742361936,
+            0.18283927788938842,
+            0.19060139848666707
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.21929932225492213,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "alpha0",
+          "rhat": 1.0078377645655021,
+          "per_chain_mean": [
+            10.459235664379877,
+            10.447886192886953,
+            10.435348311964312,
+            10.438289590763723
+          ],
+          "per_chain_sd": [
+            0.2097308745232886,
+            0.21957713836496803,
+            0.19614386869649866,
+            0.22774110175868595
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.11199038380253466,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_region[Latin America & Caribbean]",
+          "rhat": 1.0077521659121547,
+          "per_chain_mean": [
+            -0.05164817535340633,
+            -0.034943059082107104,
+            -0.025221152701589967,
+            -0.026152440217281525
+          ],
+          "per_chain_sd": [
+            0.3993092996624745,
+            0.4100019293271718,
+            0.358910382929987,
+            0.4077161270986084
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.06707631144940929,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_region[Middle East & North Africa]",
+          "rhat": 1.007623791488052,
+          "per_chain_mean": [
+            0.36143311039448484,
+            0.3821934970736025,
+            0.4600983279325892,
+            0.39479266363318577
+          ],
+          "per_chain_sd": [
+            0.42170725231724643,
+            0.44625245540450714,
+            0.4168725855291971,
+            0.438855573789109
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.228963072548706,
+          "reads_as": "slow mixing"
+        }
+      ],
+      "nu": {
+        "mean": 2.085374828485511,
+        "sd": 0.047919742462033434,
+        "q2.5": 2.0138043520182003,
+        "q97.5": 2.195726734786321,
+        "min": 2.000563847852661,
+        "floor_tolerance": 0.01,
+        "fraction_at_floor": 0.0129,
+        "implied_residual_sd_multiplier": 4.94227766878766
+      },
+      "sigma": {
+        "mean": 0.0610720478479608,
+        "sd": 0.000967912709128221
+      }
+    },
+    "nominal_fixed": {
+      "posterior": "results/trace_fixed005.nc",
+      "gdp_column": "GDP",
+      "n_chains": 4,
+      "n_draws_per_chain": 5000,
+      "n_country_years": 10933,
+      "phases": {
+        "contraction": {
+          "per_chain_mean": [
+            0.9244755809946182,
+            0.9253636084962847,
+            0.9245282585492183,
+            0.9233997077674468
+          ],
+          "pooled_mean": 0.9244417889518921,
+          "pooled_sd": 0.038129878798322914,
+          "chain_spread": 0.0019639007288378973,
+          "chain_spread_in_posterior_sd": 0.05150555917645027,
+          "per_chain_P_lt_1": [
+            0.9804,
+            0.9802,
+            0.9748,
+            0.977
+          ],
+          "n_country_years": 1133,
+          "rhat": 1.0025039012708363,
+          "ess_bulk": 1616.1827670289954,
+          "ess_tail": 3122.9404981596904,
+          "mcse_mean": 0.0009490929356924839,
+          "mcse_in_posterior_sd": 0.024891055665622216,
+          "passes_prespecified": true
+        },
+        "expansion": {
+          "per_chain_mean": [
+            0.9273628579264798,
+            0.9279003249418062,
+            0.9271693616775145,
+            0.9265945604134577
+          ],
+          "pooled_mean": 0.9272567762398145,
+          "pooled_sd": 0.03263009758028441,
+          "chain_spread": 0.0013057645283485186,
+          "chain_spread_in_posterior_sd": 0.04001718122772275,
+          "per_chain_P_lt_1": [
+            0.99,
+            0.99,
+            0.985,
+            0.9868
+          ],
+          "n_country_years": 9799,
+          "rhat": 1.0044864057733847,
+          "ess_bulk": 1334.8074792305713,
+          "ess_tail": 1950.1889649121472,
+          "mcse_mean": 0.0008943694165948087,
+          "mcse_in_posterior_sd": 0.02740933931914442,
+          "passes_prespecified": true
+        }
+      },
+      "estimand_passes_prespecified": true,
+      "blocks": {
+        "elasticity (beta0, theta)": {
+          "n_variables": 2,
+          "max_rhat": 1.0036089860039914,
+          "min_ess_bulk": 1085.861093538662,
+          "min_ess_tail": 1722.6219758454224,
+          "passes_prespecified": true
+        },
+        "scales (sigma_theta, sigma, nu)": {
+          "n_variables": 2,
+          "max_rhat": 1.0004858697603827,
+          "min_ess_bulk": 9415.403109568042,
+          "min_ess_tail": 12051.209650953033,
+          "passes_prespecified": true
+        },
+        "time (tau0, tau_region, sigma_tau_region)": {
+          "n_variables": 3,
+          "max_rhat": 1.0040189136682087,
+          "min_ess_bulk": 1421.6684414005733,
+          "min_ess_tail": 2000.860198878155,
+          "passes_prespecified": true
+        },
+        "age (delta_washare, delta_olddep)": {
+          "n_variables": 2,
+          "max_rhat": 1.000832208698702,
+          "min_ess_bulk": 4622.271645406294,
+          "min_ess_tail": 6787.007736761095,
+          "passes_prespecified": true
+        },
+        "hierarchical scales (sigma_alpha*)": {
+          "n_variables": 2,
+          "max_rhat": 1.0043518134120757,
+          "min_ess_bulk": 782.4785103846083,
+          "min_ess_tail": 855.4516468121905,
+          "passes_prespecified": true
+        },
+        "intercepts (alpha*, z_alpha*)": {
+          "n_variables": 5,
+          "max_rhat": 1.0113245882484276,
+          "min_ess_bulk": 455.5659929028536,
+          "min_ess_tail": 727.3727680220508,
+          "passes_prespecified": false
+        },
+        "ALL parameters": {
+          "n_variables": 18,
+          "max_rhat": 1.0113245882484276,
+          "min_ess_bulk": 455.5659929028536,
+          "min_ess_tail": 727.3727680220508,
+          "passes_prespecified": false
+        }
+      },
+      "worst_parameters": [
+        {
+          "parameter": "z_alpha_region[South Asia]",
+          "rhat": 1.0113245882484276,
+          "per_chain_mean": [
+            -1.025396606198813,
+            -1.0731421374668386,
+            -1.0630913879528883,
+            -1.0402262222394272
+          ],
+          "per_chain_sd": [
+            0.4596763843166581,
+            0.5280533429785924,
+            0.5914767258855198,
+            0.5281814807561914
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.09062504439574899,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_region[Sub-Saharan Africa]",
+          "rhat": 1.00595509530137,
+          "per_chain_mean": [
+            -1.2570386766403796,
+            -1.2510945448690676,
+            -1.301491142197977,
+            -1.2662828484097954
+          ],
+          "per_chain_sd": [
+            0.5120627336188988,
+            0.5542687280053809,
+            0.5961512311345911,
+            0.5740155444665583
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.09013483040600237,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Djibouti]",
+          "rhat": 1.005874270290935,
+          "per_chain_mean": [
+            -1.6398904051007135,
+            -1.6799877923110016,
+            -1.6581502005644735,
+            -1.6939555066058176
+          ],
+          "per_chain_sd": [
+            0.23944060629536534,
+            0.26540190813827425,
+            0.2601858531027318,
+            0.2542055198635033
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.21217937187323066,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Costa Rica]",
+          "rhat": 1.0055944325818702,
+          "per_chain_mean": [
+            0.07108178432431293,
+            0.07902199805862006,
+            0.08287974343360612,
+            0.037722318081693414
+          ],
+          "per_chain_sd": [
+            0.1940487335055095,
+            0.188010201653887,
+            0.18323764454203673,
+            0.19212286742877854
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.2384804114708687,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Suriname]",
+          "rhat": 1.0055274682391375,
+          "per_chain_mean": [
+            -0.14911816376988876,
+            -0.14308752516937326,
+            -0.13925454148477728,
+            -0.1874926666925132
+          ],
+          "per_chain_sd": [
+            0.2033644256572372,
+            0.2009303192176322,
+            0.1938035821483647,
+            0.20530274384073602
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.2401695838212467,
+          "reads_as": "slow mixing"
+        }
+      ],
+      "nu": {
+        "mean": 3.5318890230719253,
+        "sd": 0.15563481134876886,
+        "q2.5": 3.241558225931213,
+        "q97.5": 3.851656316956895,
+        "min": 2.9586164665945613,
+        "floor_tolerance": 0.01,
+        "fraction_at_floor": 0.0,
+        "implied_residual_sd_multiplier": 1.518412856828
+      },
+      "sigma": {
+        "mean": 0.12971470049283404,
+        "sd": 0.0019094492924943856
+      }
+    },
+    "nominal_adaptive": {
+      "posterior": "results/trace_adaptive.nc",
+      "gdp_column": "GDP",
+      "n_chains": 4,
+      "n_draws_per_chain": 5000,
+      "n_country_years": 10933,
+      "phases": {
+        "contraction": {
+          "per_chain_mean": [
+            1.217924008226057,
+            1.2181235314341288,
+            1.2195986151881124,
+            1.224089234136111
+          ],
+          "pooled_mean": 1.219933847246102,
+          "pooled_sd": 0.058412192247639744,
+          "chain_spread": 0.006165225910053973,
+          "chain_spread_in_posterior_sd": 0.10554690164540248,
+          "per_chain_P_lt_1": [
+            0.0,
+            0.0,
+            0.0002,
+            0.0
+          ],
+          "n_country_years": 1133,
+          "rhat": 1.0013033098834765,
+          "ess_bulk": 4828.40295338852,
+          "ess_tail": 8296.429075876946,
+          "mcse_mean": 0.0008406379887861299,
+          "mcse_in_posterior_sd": 0.014391481580116479,
+          "passes_prespecified": true
+        },
+        "expansion": {
+          "per_chain_mean": [
+            0.9764200301409349,
+            0.9764715835031946,
+            0.9770912060301378,
+            0.981133041786555
+          ],
+          "pooled_mean": 0.9777789653652057,
+          "pooled_sd": 0.032909369127244494,
+          "chain_spread": 0.004713011645620102,
+          "chain_spread_in_posterior_sd": 0.14321185032132286,
+          "per_chain_P_lt_1": [
+            0.7704,
+            0.7618,
+            0.7632,
+            0.7112
+          ],
+          "n_country_years": 9799,
+          "rhat": 1.0025622341292055,
+          "ess_bulk": 2743.9705166837175,
+          "ess_tail": 3903.372326459402,
+          "mcse_mean": 0.0006265937083238828,
+          "mcse_in_posterior_sd": 0.019039979341480242,
+          "passes_prespecified": true
+        }
+      },
+      "estimand_passes_prespecified": true,
+      "blocks": {
+        "elasticity (beta0, theta)": {
+          "n_variables": 2,
+          "max_rhat": 1.0042836121088714,
+          "min_ess_bulk": 1500.7152676911937,
+          "min_ess_tail": 1982.6734450588042,
+          "passes_prespecified": true
+        },
+        "scales (sigma_theta, sigma, nu)": {
+          "n_variables": 3,
+          "max_rhat": 1.001113813718216,
+          "min_ess_bulk": 6333.005235103952,
+          "min_ess_tail": 8911.412335291605,
+          "passes_prespecified": true
+        },
+        "time (tau0, tau_region, sigma_tau_region)": {
+          "n_variables": 3,
+          "max_rhat": 1.0064210798089934,
+          "min_ess_bulk": 1984.7719729640878,
+          "min_ess_tail": 2330.746530795194,
+          "passes_prespecified": true
+        },
+        "age (delta_washare, delta_olddep)": {
+          "n_variables": 2,
+          "max_rhat": 1.0004366568191763,
+          "min_ess_bulk": 4968.054170360902,
+          "min_ess_tail": 6480.320244232672,
+          "passes_prespecified": true
+        },
+        "hierarchical scales (sigma_alpha*)": {
+          "n_variables": 2,
+          "max_rhat": 1.0030214763293703,
+          "min_ess_bulk": 1168.3190046035882,
+          "min_ess_tail": 1156.271182198244,
+          "passes_prespecified": true
+        },
+        "intercepts (alpha*, z_alpha*)": {
+          "n_variables": 5,
+          "max_rhat": 1.0063442515958891,
+          "min_ess_bulk": 709.6372916886384,
+          "min_ess_tail": 817.9001809252072,
+          "passes_prespecified": true
+        },
+        "ALL parameters": {
+          "n_variables": 19,
+          "max_rhat": 1.0064210798089934,
+          "min_ess_bulk": 709.6372916886384,
+          "min_ess_tail": 817.9001809252072,
+          "passes_prespecified": true
+        }
+      },
+      "worst_parameters": [
+        {
+          "parameter": "tau0",
+          "rhat": 1.0064210798089934,
+          "per_chain_mean": [
+            0.33429689530943296,
+            0.3393187818660714,
+            0.33385476776113776,
+            0.3359804585361661
+          ],
+          "per_chain_sd": [
+            0.03689130177542921,
+            0.03432730406239645,
+            0.03963648385137867,
+            0.03712510501383885
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.14769582148201532,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "alpha_region[Europe & Central Asia]",
+          "rhat": 1.0063442515958891,
+          "per_chain_mean": [
+            10.346106926014787,
+            10.34635907900877,
+            10.349111179372228,
+            10.344028293663069
+          ],
+          "per_chain_sd": [
+            0.07087565718421864,
+            0.0730053157230901,
+            0.07395007394864103,
+            0.0808562609552374
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.06806965781582208,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Cyprus]",
+          "rhat": 1.00601696011677,
+          "per_chain_mean": [
+            0.232770809410915,
+            0.23385308605452265,
+            0.2261148241206524,
+            0.24277531643455832
+          ],
+          "per_chain_sd": [
+            0.1594596786851297,
+            0.1643247452851079,
+            0.1652744029308085,
+            0.18192895199749798
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.0993191997699562,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_alpha_country[Estonia]",
+          "rhat": 1.0056546991183946,
+          "per_chain_mean": [
+            -0.4275753300159031,
+            -0.43019816064003497,
+            -0.43627105555273255,
+            -0.4202132839286547
+          ],
+          "per_chain_sd": [
+            0.16538283120916583,
+            0.17114185204963614,
+            0.17183453825392955,
+            0.18312555299868313
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.09288864898246733,
+          "reads_as": "slow mixing"
+        },
+        {
+          "parameter": "z_tau_region[Sub-Saharan Africa]",
+          "rhat": 1.0056439229939587,
+          "per_chain_mean": [
+            -0.9334229278770028,
+            -1.0051396073981926,
+            -0.9439981397952004,
+            -0.9657690608743047
+          ],
+          "per_chain_sd": [
+            0.5755744896117638,
+            0.5788441711420061,
+            0.5995079436225047,
+            0.578812956144793
+          ],
+          "between_chain_gap_in_within_chain_sd": 0.12297417291653492,
+          "reads_as": "slow mixing"
+        }
+      ],
+      "nu": {
+        "mean": 3.7273704049235725,
+        "sd": 0.17767612875275732,
+        "q2.5": 3.3967213920610138,
+        "q97.5": 4.091682951663771,
+        "min": 3.0499251277986406,
+        "floor_tolerance": 0.01,
+        "fraction_at_floor": 0.0,
+        "implied_residual_sd_multiplier": 1.4689551597458363
+      },
+      "sigma": {
+        "mean": 0.13104283071211847,
+        "sd": 0.0019940999532806767
+      }
+    }
+  },
+  "not_found": []
+}

@@ -1,0 +1,9 @@
+{
+  "n_economies": 175,
+  "nominal_median_gap_depopulating_pct": -26.100491017243776,
+  "nominal_min_gap_depopulating_pct": -56.72845003164895,
+  "nominal_median_gap_growing_pct": 16.12484662036353,
+  "real_prior_median_gap_depopulating_pct": -7.7076109929007375,
+  "n_depopulating": 75,
+  "n_growing": 100
+}

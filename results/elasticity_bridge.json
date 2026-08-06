@@ -1,0 +1,166 @@
+{
+  "long_difference_model": {
+    "source": "results/hierarchical_wa_posterior.nc",
+    "specification": "Delta10 ln GDP = alpha_c + tau_p + (beta_c + delta_r * 1[decline]) * Delta10 ln WApop + eps",
+    "n_country_decades": 896,
+    "n_countries": 179,
+    "n_regions": 7,
+    "n_contraction_blocks": 69,
+    "expansion_elasticity": {
+      "mean": 0.8054006570724173,
+      "sd": 0.11390000410229814,
+      "q2.5_50_97.5": [
+        0.5766871329119753,
+        0.8034270452068104,
+        1.0290470643707437
+      ],
+      "P_lt_1": 0.9611666666666666
+    },
+    "contraction_elasticity": {
+      "mean": 0.7509242556444933,
+      "sd": 0.387724959370849,
+      "q2.5_50_97.5": [
+        0.009443779401076527,
+        0.7539953121315706,
+        1.4862069141208931
+      ],
+      "P_lt_1": 0.7348333333333333
+    },
+    "contraction_increment_delta": {
+      "mean": -0.05447640142792408,
+      "sd": 0.39214064245586017,
+      "q2.5_50_97.5": [
+        -0.8247051727541685,
+        -0.0530457045629348,
+        0.7014492297465149
+      ],
+      "P_lt_0": 0.5546666666666666,
+      "interpretation": "posterior straddles zero: no evidence that the elasticity differs between expansion and contraction"
+    }
+  },
+  "levels_model_candidates": {
+    "eps_0.92": {
+      "P_expansion_elasticity_exceeds": 0.15616666666666668,
+      "P_contraction_elasticity_exceeds": 0.332,
+      "posterior_percentile_in_expansion": 84.38333333333333,
+      "posterior_percentile_in_contraction": 66.8,
+      "posterior_percentile_in_five_year_blocks": 21.183333333333334,
+      "posterior_percentile_under_weak_priors": 86.48333333333333
+    },
+    "eps_1.22": {
+      "P_expansion_elasticity_exceeds": 0.001,
+      "P_contraction_elasticity_exceeds": 0.11533333333333333,
+      "posterior_percentile_in_expansion": 99.9,
+      "posterior_percentile_in_contraction": 88.46666666666667,
+      "posterior_percentile_in_five_year_blocks": 98.3,
+      "posterior_percentile_under_weak_priors": 99.76666666666667
+    }
+  },
+  "heterogeneity_shrinkage": {
+    "sigma_beta_region_posterior_mean": 0.12397325437779444,
+    "sigma_beta_region_posterior_q": [
+      0.005571682014044179,
+      0.09844805379062938,
+      0.3898407512113278
+    ],
+    "sigma_beta_region_prior": "HalfNormal(0.5)",
+    "sigma_beta_region_prior_mean": 0.3989422804014327,
+    "shrinkage_ratio_posterior_over_prior": 0.310754864721401,
+    "sigma_beta_country_posterior_mean": 0.2317940083439922,
+    "regional_expansion_range": [
+      0.732072247107122,
+      0.8303931532580897
+    ],
+    "regional_contraction_range": [
+      0.7032193399988155,
+      0.7941689428390372
+    ]
+  },
+  "robustness": {
+    "weak_priors": {
+      "specification": "beta_global ~ Normal(1, 2); delta_global ~ Normal(0, 2); every hierarchical scale ~ HalfCauchy(1)",
+      "expansion_elasticity_mean": 0.7903334323163438,
+      "expansion_elasticity_q2.5_50_97.5": [
+        0.5450607084608181,
+        0.7898775315925777,
+        1.0258032539583666
+      ],
+      "P_lt_1": 0.9615,
+      "delta_mean": -0.09741413142486169,
+      "delta_q2.5_50_97.5": [
+        -1.2476732762703338,
+        -0.09695684413018246,
+        1.1317173723211555
+      ],
+      "sigma_beta_region_mean": 0.1350674534547256,
+      "regional_expansion_range": [
+        0.7143829586070036,
+        0.8239643676504476
+      ],
+      "max_abs_regional_shift_vs_baseline": 0.017689288500118527,
+      "interpretation": "the sub-unitary result and the collapse of regional heterogeneity both survive priors that would happily accommodate unity and large between-region variance"
+    },
+    "five_year_blocks_total_population": {
+      "specification": "Delta5 ln GDP = alpha_c + beta_c * Delta5 ln Population, non-overlapping five-year blocks 1965-2020, three-level hierarchy, priors identical to the ten-year model",
+      "n_countries": 211,
+      "n_observations": 2036,
+      "elasticity_mean": 0.9979797853436877,
+      "elasticity_q2.5_50_97.5": [
+        0.7979092269874318,
+        0.9980797576956456,
+        1.2003162180887463
+      ],
+      "P_lt_1": 0.507,
+      "sigma_beta_region_mean": 0.1342522305612649,
+      "regional_range": [
+        0.9188638929984787,
+        1.0539266072199927
+      ],
+      "n_regions_whose_interval_spans_unity": 7,
+      "n_regions": 7,
+      "regional_rank_correlation_with_ten_year_model": 0.42857142857142866,
+      "interpretation": "doubling the independent sample leaves every regional interval spanning unity and reshuffles the ordering (Spearman rho 0.43 against the ten-year model) -- the signature of noise rather than structure"
+    }
+  },
+  "loo_comparison": {
+    "note": "az.compare(..., ic='loo') returns STACKING weights by default. Earlier drafts described these as Akaike weights; they are not.",
+    "models": {
+      "adaptive_HalfNormal": {
+        "elpd_loo": 2750.630093059616,
+        "elpd_diff": 0.0,
+        "dse": 0.0,
+        "stacking_weight": 0.7005251552033439,
+        "p_loo": 253.76480971645333
+      },
+      "fixed_0.05": {
+        "elpd_loo": 2699.694153981012,
+        "elpd_diff": 50.93593907860426,
+        "dse": 16.591480816784937,
+        "stacking_weight": 0.2994748447966561,
+        "p_loo": 246.50914148482616
+      }
+    },
+    "elpd_diff_in_dse": 3.070005603542898
+  },
+  "levels_model_archived": {
+    "adaptive_contraction": {
+      "mean": 1.219933847246102,
+      "ci": [
+        1.1053558379463126,
+        1.3335426312017733
+      ],
+      "n": 1133
+    },
+    "adaptive_expansion": {
+      "mean": 0.9777789653652057,
+      "ci": [
+        0.9132864456102843,
+        1.0415149431725998
+      ],
+      "n": 9799
+    },
+    "core_mean_elasticity_inflection_json": 0.9680422629814146,
+    "core_mean_elasticity_figure_summary_json": 0.9492196389304842,
+    "DISCREPANCY": "elasticity_inflection.json and elasticity_figure_summary.json report different core means (0.9680 vs 0.9492) and different tipping points (5835956 vs 9361098). Only elasticity_inflection.json carries credible intervals and sample sizes; use it and drop the other."
+  }
+}
