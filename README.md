@@ -193,7 +193,7 @@ analysis-ready panel derived from them.
 
 ## Archive
 
-The posterior sample files (about 8.8 GB of NetCDF) and the complete result set are permanently
+The posterior sample files (seven files, about 10.0 GB of NetCDF) and the complete result set are permanently
 archived on Zenodo. The DOI is added here on release of this version; see `results/POSTERIORS.md`
 for what each file is and which stage needs it.
 

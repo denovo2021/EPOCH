@@ -1,4 +1,4 @@
-# Posterior sample files — about 8.8 GB in total. They live on Zenodo, not here.
+# Posterior sample files — about 10.0 GB in total. They live on Zenodo, not here.
 # See results/POSTERIORS.md for the inventory and what each stage needs.
 *.nc
 
