@@ -28,6 +28,7 @@ Usage:  python src/s10_make_figures_2100.py
 """
 from __future__ import annotations
 
+import argparse
 import json
 
 import matplotlib
@@ -68,7 +69,16 @@ plt.rcParams.update({
 })
 
 
+FIG_SUFFIX = ""
+LBL_A = "$\\varepsilon$ = 0.92  (fixed-penalty levels model)"
+LBL_B = "$\\varepsilon$ = 0.98 / 1.22  (adaptive levels model)"
+LBL_A_SHORT = "$\\varepsilon$=0.92 world"
+LBL_B_SHORT = "$\\varepsilon$=1.22 world"
+
+
 def save(fig, stem):
+    if FIG_SUFFIX and stem.startswith(("Figure5", "Figure6")):
+        stem = stem + FIG_SUFFIX
     DIR_FIGURES.mkdir(parents=True, exist_ok=True)
     for ext in ("pdf", "png"):
         fig.savefig(DIR_FIGURES / ("%s.%s" % (stem, ext)))
@@ -233,9 +243,9 @@ def figure5(a_summ, b_summ, panel):
     ax.set_axisbelow(True)
     ax.legend(handles=[
         Line2D([], [], marker="o", ls="", color=BLUE, ms=4,
-               label="$\\varepsilon$ = 0.92  (fixed-penalty levels model)"),
+               label=LBL_A),
         Line2D([], [], marker="o", ls="", color=RED, ms=4,
-               label="$\\varepsilon$ = 0.98 / 1.22  (adaptive levels model)")],
+               label=LBL_B)],
         loc="lower left", handletextpad=0.35, borderpad=0.2, labelspacing=0.35)
     ax.set_title("Bold labels: population falls by 2100", color=INK2, loc="left",
                  fontsize=6.5, pad=5)
@@ -260,8 +270,7 @@ def figure5(a_summ, b_summ, panel):
         ax.annotate(iso, (gp[iso], wedge[iso]), xytext=(3.5, 3.5),
                     textcoords="offset points", fontsize=6, color=INK, fontweight="bold")
     ax.set_xlabel("Population growth 2024–2100 (% per year)")
-    ax.set_ylabel("Difference in 2100 output per capita,\n$\\varepsilon$=1.22 world vs "
-                  "$\\varepsilon$=0.92 world (%)")
+    ax.set_ylabel("Difference in 2100 output per capita,\n%s vs %s (%%)" % (LBL_B_SHORT, LBL_A_SHORT))
     ax.grid(True, which="major")
     ax.set_axisbelow(True)
     ax.text(0.98, 0.04, "the two elasticities agree\nwhere population grows",
@@ -310,8 +319,8 @@ def figure6(dec, panel):
         ax2.text(v - 0.6 if v < 0 else v + 0.6, i, "%+.0f" % v, fontsize=5.8,
                  va="center", ha="right" if v < 0 else "left", color=INK2)
     ax2.set_xlabel("Change in sustainable real benefit\nper retiree in 2100 (%)")
-    ax2.set_title("What the elasticity decides:\n$\\varepsilon$=1.22 world vs "
-                  "$\\varepsilon$=0.92 world", color=INK, loc="left", fontsize=7, pad=6)
+    ax2.set_title("What the elasticity decides:\n%s vs %s" % (LBL_B_SHORT, LBL_A_SHORT),
+                  color=INK, loc="left", fontsize=7, pad=6)
     ax2.set_xlim(min(sh.min() * 1.28, -3), max(sh.max() * 1.5, 8))
 
     for ax_ in (ax, ax2):
@@ -331,13 +340,34 @@ def figure6(dec, panel):
 
 
 # =============================================================================== main
-def main():
+def main(argv=None):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--world-a", dest="world_a", default="_eps0.92",
+                    help="projection tag for world A (\"\" = the fitted long-difference run)")
+    ap.add_argument("--world-b", dest="world_b", default="_eps1.22",
+                    help="projection tag for world B")
+    ap.add_argument("--dec-tag", dest="dec_tag", default="",
+                    help="suffix of the decision_layer{tag}.csv/.json to read")
+    ap.add_argument("--fig-suffix", dest="fig_suffix", default="",
+                    help="suffix appended to the stem of Figure5/Figure6 output files")
+    ap.add_argument("--label-a", dest="label_a", default=None,
+                    help="legend/axis label for world A (defaults to the eps=0.92 wording)")
+    ap.add_argument("--label-b", dest="label_b", default=None,
+                    help="legend/axis label for world B (defaults to the eps=1.22 wording)")
+    args = ap.parse_args(argv)
+    global FIG_SUFFIX, LBL_A, LBL_B, LBL_A_SHORT, LBL_B_SHORT
+    FIG_SUFFIX = args.fig_suffix
+    if args.label_a:
+        LBL_A = args.label_a; LBL_A_SHORT = args.label_a
+    if args.label_b:
+        LBL_B = args.label_b; LBL_B_SHORT = args.label_b
+
     long_df = pd.read_csv(DIR_RESULTS / "projection_2100.csv")
     summ = pd.read_csv(DIR_RESULTS / "projection_summary.csv")
-    a = pd.read_csv(DIR_RESULTS / "projection_summary_eps0.92.csv")
-    b = pd.read_csv(DIR_RESULTS / "projection_summary_eps1.22.csv")
-    dec = pd.read_csv(DIR_RESULTS / "decision_layer.csv").set_index("ISO3")
-    panel = json.load(open(DIR_RESULTS / "decision_layer.json"))["panel"].keys()
+    a = pd.read_csv(DIR_RESULTS / ("projection_summary%s.csv" % args.world_a))
+    b = pd.read_csv(DIR_RESULTS / ("projection_summary%s.csv" % args.world_b))
+    dec = pd.read_csv(DIR_RESULTS / ("decision_layer%s.csv" % args.dec_tag)).set_index("ISO3")
+    panel = json.load(open(DIR_RESULTS / ("decision_layer%s.json" % args.dec_tag)))["panel"].keys()
     panel = list(panel)
 
     resid = np.abs((np.log(long_df.GDP_median) - np.log(long_df.GDPpc_median))

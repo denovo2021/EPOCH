@@ -62,6 +62,8 @@ from config import PATH_AGE_SCEN, PATH_POP_SCEN, DIR_RESULTS
 BASE, END = 2024, 2100
 WORLD_A, WORLD_B = "_eps0.92", "_eps1.22"           # sub-unitary / super-unitary in contraction
 LABEL_A, LABEL_B = "eps=0.92", "eps=0.98/1.22"
+# The four constants above are defaults only; --world-a/--world-b/--label-a/--label-b
+# override them, so the same script can contrast any two projection runs.
 
 # Economies for the main-text panel: the largest economies plus the fastest-ageing ones.
 PANEL = ["JPN", "KOR", "ITA", "DEU", "ESP", "CHN", "POL", "RUS", "PRT", "GRC", "THA", "UKR",
@@ -78,9 +80,18 @@ def main(argv=None):
     ap.add_argument("--s0", type=float, default=0.10,
                     help="illustrative 2024 age-related outlay as a share of GDP")
     ap.add_argument("--discount", type=float, default=0.03, help="real discount rate")
+    ap.add_argument("--world-a", dest="world_a", default=WORLD_A,
+                    help="projection tag for world A (\"\" = the fitted long-difference run)")
+    ap.add_argument("--world-b", dest="world_b", default=WORLD_B,
+                    help="projection tag for world B")
+    ap.add_argument("--label-a", dest="label_a", default=LABEL_A)
+    ap.add_argument("--label-b", dest="label_b", default=LABEL_B)
+    ap.add_argument("--out-tag", dest="out_tag", default="",
+                    help="suffix appended to decision_layer{tag}.csv/.json")
     args = ap.parse_args(argv)
+    label_a, label_b = args.label_a, args.label_b
 
-    GA, GB = load(WORLD_A), load(WORLD_B)
+    GA, GB = load(args.world_a), load(args.world_b)
     GF = load("")                                    # fitted long-difference run
     isos = [c for c in GA.columns if c in GB.columns and c in GF.columns]
 
@@ -143,14 +154,14 @@ def main(argv=None):
         })
 
     df = pd.DataFrame(rows).set_index("ISO3")
-    df.to_csv(DIR_RESULTS / "decision_layer.csv")
+    df.to_csv(DIR_RESULTS / ("decision_layer%s.csv" % args.out_tag))
 
     shrink = df[df.g_pop_pct < 0]
     grow = df[df.g_pop_pct >= 0]
     summary = {
         "settings": {"s0_illustrative_share_of_gdp": args.s0,
                      "real_discount_rate": args.discount,
-                     "world_A": LABEL_A, "world_B": LABEL_B,
+                     "world_A": label_a, "world_B": label_b,
                      "base_year": BASE, "end_year": END,
                      "outlay_rule": ("wage indexation: benefits set as a fixed fraction of output per "
                                     "worker, so the outlay ratio is s0 * OADR(t)/OADR(2024) and "
@@ -200,14 +211,15 @@ def main(argv=None):
                          shrink.doubling_delay_years.median(),
                          shrink.debt_wedge_pp_per_100pct_debt.median())),
     }
-    with open(DIR_RESULTS / "decision_layer.json", "w") as fh:
+    with open(DIR_RESULTS / ("decision_layer%s.json" % args.out_tag), "w") as fh:
         json.dump(summary, fh, indent=2)
 
     # ---------------------------------------------------------------------- report
     print("DECISION LAYER  |  %d countries (%d depopulating)  |  s0 = %.0f%% of GDP, "
           "discount %.1f%%" % (len(df), len(shrink), args.s0 * 100, args.discount * 100))
     print("\n  Columns 'pressure' are elasticity-INVARIANT (demography only). Columns")
-    print("  'benefit shortfall' are the cost of not knowing whether eps is 0.92 or 1.22.\n")
+    print("  'benefit shortfall' is the cost of world B (%s) relative to world A (%s).\n"
+          % (label_b, label_a))
     print("  %-5s %7s | %6s %6s | %9s %9s | %9s %9s %7s" %
           ("ISO3", "gPop%", "OADR24", "OADR00", "press50%", "press00%",
            "ben50%", "ben00%", "2xdelay"))
@@ -227,13 +239,13 @@ def main(argv=None):
           "per-capita output doubles %.0f years later,\n  and present-value output over "
           "2024-2100 is %.1f%% smaller." %
           (len(shrink), shrink.pressure_2100_pct.median(),
-           -shrink.benefit_shortfall_2100_pct.median(), LABEL_B, LABEL_A,
+           -shrink.benefit_shortfall_2100_pct.median(), label_b, label_a,
            shrink.doubling_delay_years.median(),
            (1 - shrink.npv_ratio_B_over_A.median()) * 100))
     print("  Per 100%% of GDP of initial public debt, the two elasticities differ by a "
           "median of\n  %.2f pp of GDP in the annual primary surplus needed to hold the "
           "debt ratio constant." % shrink.debt_wedge_pp_per_100pct_debt.median())
-    print("\n  wrote decision_layer.csv, decision_layer.json")
+    print("\n  wrote decision_layer%s.csv, decision_layer%s.json" % (args.out_tag, args.out_tag))
 
 
 if __name__ == "__main__":
