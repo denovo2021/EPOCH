@@ -6,11 +6,20 @@ alongside it. This writes one CSV per figure containing exactly the columns that
 reader can reconstruct the panel without running the pipeline. Everything is read from
 the same result files the figures read, so a source-data file cannot drift from its figure.
 
-Usage:  python src/s12_source_data.py
-Output: results/source_data/Figure{3,4,5,6}_source_data.csv , plus a manifest
+The decision-layer figure is drawn from whichever decision layer was asked for, so
+--dec-tag selects the contrast: no flag reproduces the archived eps=0.92 vs eps=1.22
+comparison bit for bit, and --dec-tag _epsband writes the fitted-versus-eps=1.00 contrast
+the manuscript reports, to a separate filename. The panel rows follow the order
+s10_make_figures_2100.figure6 draws them in, sorted by population growth, so the file
+reconstructs the figure top to bottom.
+
+Usage:  python src/s12_source_data.py [--dec-tag _epsband]
+Output: results/source_data/Figure{3,4,5}_source_data.csv ,
+        results/source_data/Figure6_source_data{dec_tag}.csv , plus a manifest
 """
 from __future__ import annotations
 
+import argparse
 import json
 
 import pandas as pd
@@ -20,14 +29,15 @@ from config import DIR_RESULTS
 OUT = DIR_RESULTS / "source_data"
 
 
-def main():
+def main(dec_tag: str = ""):
     OUT.mkdir(parents=True, exist_ok=True)
     long_df = pd.read_csv(DIR_RESULTS / "projection_2100.csv")
     summ = pd.read_csv(DIR_RESULTS / "projection_summary.csv")
     a = pd.read_csv(DIR_RESULTS / "projection_summary_eps0.92.csv").set_index("ISO3")
     b = pd.read_csv(DIR_RESULTS / "projection_summary_eps1.22.csv").set_index("ISO3")
-    dec = pd.read_csv(DIR_RESULTS / "decision_layer.csv").set_index("ISO3")
-    panel = list(json.load(open(DIR_RESULTS / "decision_layer.json"))["panel"].keys())
+    dec = pd.read_csv(DIR_RESULTS / ("decision_layer%s.csv" % dec_tag)).set_index("ISO3")
+    dec_meta = json.load(open(DIR_RESULTS / ("decision_layer%s.json" % dec_tag)))
+    panel = list(dec_meta["panel"].keys())
 
     written = {}
 
@@ -65,14 +75,19 @@ def main():
                                           "g_pop_pct_per_yr for all rows")
 
     # ---- Figure 6: the decision layer
-    f6 = dec.loc[[i for i in panel if i in dec.index], [
+    sel = sorted([i for i in panel if i in dec.index], key=lambda i: dec.loc[i, "g_pop_pct"])
+    f6 = dec.loc[sel, [
         "g_pop_pct", "oadr_2024", "oadr_2100", "pressure_2050_pct", "pressure_2100_pct",
         "benefit_shortfall_2050_pct", "benefit_shortfall_2100_pct",
         "debt_wedge_pp_per_100pct_debt", "doubling_delay_years"]].reset_index()
-    f6.insert(2, "outlay_2024_pct", 10.0)
-    f6.to_csv(OUT / "Figure6_source_data.csv", index=False)
-    written["Figure6_source_data.csv"] = ("panel a: outlay_2024_pct -> pressure_2100_pct; "
-                                          "panel b: benefit_shortfall_2100_pct")
+    f6.insert(2, "outlay_2024_pct",
+              dec_meta["settings"]["s0_illustrative_share_of_gdp"] * 100)
+    name6 = "Figure6_source_data%s.csv" % dec_tag
+    f6.to_csv(OUT / name6, index=False)
+    written[name6] = ("panel a: outlay_2024_pct -> pressure_2100_pct; "
+                      "panel b: benefit_shortfall_2100_pct; "
+                      "world A = %s, world B = %s; rows ordered by g_pop_pct as drawn"
+                      % (dec_meta["settings"]["world_A"], dec_meta["settings"]["world_B"]))
 
     # ---- Figures 1, 2, S1-S5 derive from the two levels posteriors, which are archived
     #      separately because of their size. Record that rather than shipping a stub.
@@ -94,6 +109,7 @@ def main():
     }
     with open(OUT / "MANIFEST.json", "w") as fh:
         json.dump({"generated_by": "src/s12_source_data.py",
+                   "dec_tag": dec_tag or "(archived comparison)",
                    "files": written, "figures_without_a_csv": note}, fh, indent=2)
 
     print("wrote %d source-data files to %s" % (len(written), OUT))
@@ -102,4 +118,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--dec-tag", dest="dec_tag", default="",
+                    help="suffix of the decision-layer run to draw Figure 6 from, e.g. _epsband")
+    main(**vars(ap.parse_args()))
