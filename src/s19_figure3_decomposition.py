@@ -121,7 +121,8 @@ ax2.set_yticks(y); ax2.set_yticklabels(["fastest\ndecline","","median","","faste
 ax2.set_ylabel("Population-growth quintile",fontsize=8.5,color=MUTED,labelpad=6)
 ax2.set_xlabel("Contribution to output per person (% yr$^{-1}$)",labelpad=2)
 ax2.set_title("b", fontsize=11, fontweight="bold", loc="left", pad=14)
-ax2.text(0,1.02,"Drift is 15–80× the demographic term",transform=ax2.transAxes,
+ratio=g.dr/g.D.abs()   # stated from the quintile medians, so the subtitle cannot drift from the bars
+ax2.text(0,1.02,"Drift is %.0f–%.0f× the demographic term"%(ratio.min(),ratio.max()),transform=ax2.transAxes,
          fontsize=8.5,color=MUTED,va="bottom")
 ax2.set_xlim(-0.62,2.72); ax2.set_ylim(-0.72,4.72)
 ax2.legend(loc="lower left",fontsize=7.5,handletextpad=.3,borderpad=.2,ncol=2,
