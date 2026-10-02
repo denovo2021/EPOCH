@@ -1,12 +1,12 @@
 """Regenerate Supplementary Figure S4 (local population-output elasticity) from
 the FIXED, strongly-regularized spline posterior (RW SD = 0.05), so the figure
-matches its finalized caption: a smooth, structurally sub-unitary elasticity.
+matches its finalized caption: a smooth elasticity close to unity.
 
 NOTE ON SOURCE FILE: the directive named results/hierarchical_model_smoothed.nc,
 but that posterior in fact yields the *super-unitary* adaptive elasticity
 (decline mean = 1.22), i.e. it would reproduce the caption mismatch. The genuine
 fixed-penalty (RW 0.05) posterior that gives the smooth sub-unitary elasticity
-(decline = growth = 0.92) is trace_fixed005.nc - the file labelled
+(decline 0.92, growth 0.93) is trace_fixed005.nc - the file labelled
 "Fixed penalty (RW 0.05): e~0.92" in make_sensitivity_figure.py. This script
 therefore loads trace_fixed005.nc.
 
@@ -61,7 +61,7 @@ def basis(x, nu=0):
 #
 # NOTE: Supplementary Fig. S4 is DELIBERATELY the nominal fixed-penalty curve. The SI text
 # introduces it as "under the fixed first-difference penalty on the nominal series", quotes
-# 0.92 in both demographic phases, and ties that constant to the counterfactual projection run
+# 0.92 and 0.93 in the two demographic phases, and ties that constant to the counterfactual projection run
 # tagged _eps0.92. Re-pointing this figure at trace_fixed005_real.nc would contradict its own
 # caption. The argument below exists for sensitivity checks, not for the deposited figure.
 #   $env:GDP_COL="GDP_constant_2015usd"
@@ -130,8 +130,6 @@ ax.axhline(ed, color="#8c2d04", lw=1.3)
 ax.text(logpop[core][3], ed + 0.03,
         "phase-averaged ε ≈ %.2f (decline %.2f, growth %.2f)" % ((ed + eg) / 2, ed, eg),
         color="#8c2d04", fontsize=7.5)
-ax.text(0.97, 0.05, "ε < 1 across the data-dense core\n(structurally sub-unitary; no ε = 1 crossing)",
-        transform=ax.transAxes, ha="right", va="bottom", fontsize=7, color="#444")
 ax.set_ylim(min(0.6, e_smooth[core].min() - 0.1), max(1.15, e_smooth[core].max() + 0.1))
 ax.set_xlim(logpop[core].min(), logpop[core].max())
 ax.set_xlabel("log$_{10}$ Population")
